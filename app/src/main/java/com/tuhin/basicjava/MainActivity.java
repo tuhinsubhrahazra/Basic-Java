@@ -1,6 +1,7 @@
 package com.tuhin.basicjava;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recycleView;
     EditText num;
     Button okButton;
+    CardView addButton;
     public static BlankFragment dilog;
     public static ArrayList<custom> arrayList = new ArrayList<>();
 
@@ -29,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
         num = findViewById(R.id.num);
         okButton = findViewById(R.id.okButton);
         recycleView = findViewById(R.id.recycleView);
+        addButton = findViewById(R.id.addButton);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dilog = new BlankFragment();
+                dilog.show(getSupportFragmentManager(),"Dialog");
+                setRecycleView();
+            }
+        });
 
         setRecycleView();
         okButton.setOnClickListener(new View.OnClickListener() {
